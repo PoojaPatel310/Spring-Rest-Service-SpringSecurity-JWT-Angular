@@ -15,10 +15,10 @@ public interface CourseDao  extends JpaRepository<Course,Long> {
 
     Page<Course> findCourseByCourseNameContains(String keyword, Pageable pageable);
 
-    @Query(value = "select * from courses as c where c.course_id IN (SELECT e.course_id from enrolled_in as e where e.student_id =:studentId)",nativeQuery = true)
+    @Query(value = "select * from courses where course_id IN (SELECT e.course_id from enrolled_in as e where e.student_id =:studentId)",nativeQuery = true)
     Page<Course> getCourseByStudentId(@Param("studentId") Long studentId , Pageable pageable);
 
-    @Query(value = "select * from courses as c where c.course_id not in (SELECT e.course_id from enrolled_in as e where e.student_id =:studentId)",nativeQuery = true)
+    @Query(value = "select * from courses where course_id not in (SELECT e.course_id from enrolled_in as e where e.student_id =:studentId)",nativeQuery = true)
     Page<Course> getNonEnrolledInCourseByStudentId(@Param("studentId") Long studentId , Pageable pageable);
 
     @Query(value = "select c from Course as c where c.instructor.instructorId=:instructorId")

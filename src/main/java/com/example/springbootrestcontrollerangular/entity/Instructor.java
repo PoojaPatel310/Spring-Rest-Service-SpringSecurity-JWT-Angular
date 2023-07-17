@@ -23,7 +23,7 @@ public class Instructor {
     private Set<Course> courses = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id" , nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )  //, nullable = false)
     private User user;
 
     @Override

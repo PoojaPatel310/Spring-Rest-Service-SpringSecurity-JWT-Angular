@@ -5,4 +5,7 @@ import com.example.springbootrestcontrollerangular.entity.Role;
 public interface RoleService {
 
     Role createRole(String roleName);
+
+
+
 }
